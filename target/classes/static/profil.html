@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+ <link rel="icon" href="/img/favicon.ico" type="image/gif" sizes="16x16">
+ <title>Pocetna stranica</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">	
+  <script type="text/javascript" src="/js/profil.js"></script>
+</head>
+
+
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" >
+			<a href="#" class="navbar-brand">
+				<img src="/img/cinema1.jpg" height="28" alt="CoolBrand">
+			</a>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<div class="navbar-nav ml" >
+					<a href="index.html" class="nav-item nav-link active">Početna</a>
+					<div class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Filmovi</a>
+						<div class="dropdown-menu">
+							<a href="filmovi.html" class="dropdown-item">Filmovi</a>
+							<a href="pretraga.html" class="dropdown-item">Pretraga</a>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class="navbar-nav ml-auto">
+					<a  href="prijava.html" class="nav-item nav-link">Prijava</a>
+					<a href="registracija.html" class="nav-item nav-link">Registracija</a>
+				</div>
+				
+			</div>
+		</nav>
+
+ <!-- GLEDALAC -->
+<div class="container1" id="zaGledaoce">
+
+<div class="d-flex justify-content h-100">
+
+<div class="card-header">
+		<h2>Prikaz Profila</h3>
+		
+		<div class="col-lg-5 text-left text-md-left" id="podaci">
+	    <div class="font-weight-normal">
+	          
+	        
+	          <div class="ml-xl-2 ml-2">
+	            <p><strong>Korisnicko ime: </strong><span class="korisnickoIme"></span></p>
+	          </div>
+	         <div class="ml-xl-2 ml-2">
+	            <p><strong>Lozinka: </strong><span class="lozinka"></span></p>
+	          </div>
+	          <div class="ml-xl-2 ml-2">
+	            <p><strong>Ime: </strong><span class="ime"></span></p>
+	          </div>
+	         <div class="ml-xl-2 ml-2">
+	            <p><strong>Prezime: </strong><span class="prezime"></span></p>
+	          </div>
+			<div class="ml-xl-2 ml-2">
+	            <p><strong>Kontakt telefon: </strong><span class="kontaktTelefon"></span></p>
+	          </div>
+			   <div class="ml-xl-2 ml-2">
+	            <p><strong>E adresa: </strong><span class="emailAdresa"></span></p>
+	          </div>
+			 <div class="ml-xl-2 ml-2">
+	            <p><strong>Datum rođenja: </strong><span class="datumRodjenja"></span></p>
+	          </div>
+			<div class="ml-xl-2 ml-2">
+	            <p><strong>Uloga: </strong><span class="uloga"></span></p>
+	          </div>
+	          
+	        </div>
+	    </div>
+</div>       
+
+<div class="col-lg-5 text-right text-md-right" style="margin-top:65px;"id="gledalac">
+	
+	        <img src="/img/profil.jpg" style="width:300px; height:300px;" />
+		<div class="dugmici">
+			<button class="btnRezervisani btn  btn btn-primary" style=" width: 200px;" id="1">Rezervisane karte</button>
+	        <button class="btnSvi btn btn btn-primary" style=" width: 200px;" id="2">Odgledani filmovi</button>
+			<button class="btnOcenjeni btn  btn btn-primary" style=" width: 200px;" id="3">Ocenjeni filmovi</button>
+			<button class="btnNeocenjeni btn  btn btn-primary" style=" width: 200px;" id="4">Neocenjeni filmovi</button>
+		 
+			
+		</div>
+	      </div>
+
+</div>
+</div>
+
+
+<!-- LISTE -->
+
+<!-- GLEDALAC-REZERVISANE KARTE -->
+	<div class=" py-3 z-depth-1 d-none" id="listaKarte">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold" style="color:white">LISTA REZERVISANIH KARATA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela">
+				  
+				    <tr>
+				    <th scope="col">Naziv filma</th>
+				      <th scope="col">Datum održavanja</th>
+				      <th scope="col">Vreme početka</th>
+				      <th scope="col">Cena</th>
+				      <th scope="col">Broj rezervacija</th>
+				      <th scope="col">Bioskop</th>
+				      <th scope="col">Sala</th>
+				       <th scope="col">Opcija</th>
+				         <th scope="col">Opcija</th>
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+	
+	
+	<!-- GLEDALAC-SVI ODGLEDANI FILMOVI -->
+	<div class=" py-3 z-depth-1 d-none" id="odgledaniFilmovi">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold " style="color:white">LISTA ODGLEDANIH FILMOVA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela1">
+				  
+				    <tr>
+				    <th scope="col">Naziv filma</th>
+				      <th scope="col">žanr</th>
+				      <th scope="col">Opis</th>
+				      <th scope="col">Trajanje</th>
+				      <th scope="col">Srednja ocjena</th>
+				      <th scope="col">Oceni</th>
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+	
+	<!-- GLEDALAC-OCENJENI FILMOVI -->
+	<div class=" py-3 z-depth-1 d-none" id="ocenjeniFilmovi">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold" style="color:white">LISTA OCENJENIH FILMOVA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela2">
+				  
+				    <tr>
+				    <th scope="col">Naziv filma</th>
+				      <th scope="col">žanr</th>
+				      <th scope="col">Opis</th>
+				      <th scope="col">Trajanje</th>
+				       <th scope="col">Ocena</th>
+				      
+				      
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+	
+	<!-- GLEDALAC-NEOCJENJENI FILMOVI -->
+	<div class=" py-3 z-depth-1 d-none" id="neocenjeniFilmovi">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold "style="color:white" >LISTA NEOCENJENIH FILMOVA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela3">
+				  
+				    <tr>
+				    <th scope="col">Naziv filma</th>
+				      <th scope="col">žanr</th>
+				      <th scope="col">Opis</th>
+				      <th scope="col">Trajanje</th>
+				       <th scope="col">Srednja ocena</th>
+				        <th scope="col">Opcija</th>
+				      
+				      
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+
+<!-- Obrazac za ocenjivanje-->
+		<div class="d-none" id="ocenjivanje">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" id="logcard" style="height:500px">
+					<div class="card-header">
+						<h3>Popuni podatke da bi ocenio</h3>
+						
+					</div>
+					<div class="card-body" style="background-color: white">
+						<form>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									
+								</div>
+								<input type="text" class="form-control" id="korisnickoImeOcena" placeholder="Korisničko ime">
+								
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+								
+								</div>
+								<input type="password" class="form-control" id="lozinkaOcena" placeholder="Lozinka">
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									
+								</div>
+								<input type="number" min="0" max="10" class="form-control" id="ocenaOcena" placeholder="Ocena">
+							</div>
+							<div id="prikazi">
+							
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<input type="submit" id="oceniFilm" value="Oceni" class="btn btn-primary float-right login_btn" >
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+						<div class="d-flex justify-content-center links">
+							Niste prijavljeni?
+						</div>
+						<div class="d-flex justify-content-center">
+							<a href="registracija.html">Registrujte se</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+
+
+<!-- ZA MENADZERE -->
+
+<div class="container1" id="zaMenadzere">
+
+<div class="d-flex justify-content h-100">
+
+<div class="card-header">
+		<h2>Prikaz Profila</h3>
+		
+		<div class="col-lg-5 text-left text-md-left" id="podaci">
+	    <div class="font-weight-normal">
+	          
+	        
+	          <div class="ml-xl-2 ml-2">
+	            <p><strong>Korisnicko ime: </strong><span class="korisnickoIme"></span></p>
+	          </div>
+	         <div class="ml-xl-2 ml-2">
+	            <p><strong>Lozinka: </strong><span class="lozinka"></span></p>
+	          </div>
+	          <div class="ml-xl-2 ml-2">
+	            <p><strong>Ime: </strong><span class="ime"></span></p>
+	          </div>
+	         <div class="ml-xl-2 ml-2">
+	            <p><strong>Prezime: </strong><span class="prezime"></span></p>
+	          </div>
+			<div class="ml-xl-2 ml-2">
+	            <p><strong>Kontakt telefon: </strong><span class="kontaktTelefon"></span></p>
+	          </div>
+			   <div class="ml-xl-2 ml-2">
+	            <p><strong>E adresa: </strong><span class="emailAdresa"></span></p>
+	          </div>
+			 <div class="ml-xl-2 ml-2">
+	            <p><strong>Datum rođenja: </strong><span class="datumRodjenja"></span></p>
+	          </div>
+			<div class="ml-xl-2 ml-2">
+	            <p><strong>Uloga: </strong><span class="uloga"></span></p>
+	          </div>
+	          
+	        </div>
+	    </div>
+</div>       
+
+<div class="col-lg-5 text-right text-md-right" style="margin-top:65px;"id="gledalac">
+	
+	        <img src="/img/profil.jpg" style="width:300px; height:300px;" />
+		<div class="dugmici">
+			<button class="btnBioskopi btn  btn btn-primary" style=" width: 250px;" id="1">Moji bioskopi</button>
+	        <button class="btnDodajFilm btn btn-primary" onclick="location.href='FilmAdd.html'"   style=" width: 250px;" id="2">Dodaj film</button>
+		</div>
+	      </div>
+
+</div>
+</div>
+
+<!-- MENADZER-LISTA BIOSKOPA ZA KOJE JE ZADUZEN -->
+<div class=" py-3 z-depth-1 d-none" id="bioskopi">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold " style="color:white" >LISTA BIOSKOPA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela4">
+				  
+				    <tr>
+				    <th scope="col">Naziv</th>
+				      <th scope="col">Adresa</th>
+				      <th scope="col">Broj centrale</th>
+				      <th scope="col">E mail</th>
+				        <th scope="col">Opcija</th>
+				          <th scope="col">Opcija</th>
+	
+				      
+				      
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+	
+	
+	<!-- MENADZER-LISTA SALA NJEGOVIH BIOSKOPA -->
+	<div class=" py-3 z-depth-1 d-none" id="sale">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold" style="color:white" >LISTA SALA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela5">
+				  
+				    <tr>
+				    <th scope="col">Bioskop</th>
+				    <th scope="col">Oznaka sale</th>
+				      <th scope="col">Kapacitet</th>
+				      <th scope="col">Opcija</th>
+				       <th scope="col">Opcija</th>				      				      
+				    </tr> 
+	</table>
+				
+			</div>
+		</section>
+	</div>
+	
+	
+	<!-- MENADZER-REPERTOAR BIOSKOPA -->
+	<div class=" py-3 z-depth-1 d-none" id="repertoar">
+		
+		<section class="text-center" id="prikaz">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold " style="color:white">REPERTOAR ODABRANOG BIOSKOPA</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabela6">
+				  
+				    <tr>
+				      <th scope="col">Bioskop</th>
+				    <th scope="col">Naziv filma</th>
+				      <th scope="col">Datum održavanja</th>
+				      <th scope="col">Vreme početka</th>
+				      <th scope="col">Cena</th>
+				      <th scope="col">Broj rezervacija</th>
+				      <th scope="col">Sala</th>
+				       <th scope="col">Opcija</th>
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+	
+	
+	<!--MENADZER Obrazac za izmenu sale-->
+		<div class="d-none" id="Izmena-sala">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" id="logcard">
+					<div class="card-header">
+						<h3>Novi podaci za izabranu salu:</h3>
+						
+					</div>
+					<div class="card-body" style="background-color: white">
+						<form >
+							<div id="izmenaSala">
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<input  type="button" id="izmeni1" value="Izmeni" class="btn btn-primary float-right " >
+							</div>
+						</form>
+					</div>	
+				</div>
+			</div>
+		</div>
+	
+	
+	<!--MENADZER Obrazac za izmjenu repertoara-->
+		<div class="d-none" id="Izmena-repertoar">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" id="logcard" style="height:650px">
+					<div class="card-header">
+						<h3>Novi podaci za izabrani repertoar:</h3>
+						
+					</div>
+					<div class="card-body" style="background-color: white">
+						<form >
+							<div id="izmenaRepertoara">
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<input type="submit" id="izmeni2" value="Izmeni" class="btn btn-primary float-right login_btn" >
+							</div>
+						</form>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+
+
+
+
+<!-- ADMIN -->
+<div class="container1" id="zaAdmina">
+
+<div class="d-flex justify-content h-100">
+
+<div class="card-header">
+		<h2>Prikaz Profila</h3>
+		
+		<div class="col-lg-5 text-left text-md-left" id="podaci">
+	    <div class="font-weight-normal">
+	          
+	        
+	          <div class="ml-xl-2 ml-2">
+	            <p><strong>Korisnicko ime: </strong><span class="korisnickoIme"></span></p>
+	          </div>
+	         <div class="ml-xl-2 ml-2">
+	            <p><strong>Lozinka: </strong><span class="lozinka"></span></p>
+	          </div>
+	          <div class="ml-xl-2 ml-2">
+	            <p><strong>Ime: </strong><span class="ime"></span></p>
+	          </div>
+	         <div class="ml-xl-2 ml-2">
+	            <p><strong>Prezime: </strong><span class="prezime"></span></p>
+	          </div>
+			<div class="ml-xl-2 ml-2">
+	            <p><strong>Kontakt telefon: </strong><span class="kontaktTelefon"></span></p>
+	          </div>
+			   <div class="ml-xl-2 ml-2">
+	            <p><strong>E adresa: </strong><span class="emailAdresa"></span></p>
+	          </div>
+			 <div class="ml-xl-2 ml-2">
+	            <p><strong>Datum rođenja: </strong><span class="datumRodjenja"></span></p>
+	          </div>
+			<div class="ml-xl-2 ml-2">
+	            <p><strong>Uloga: </strong><span class="uloga"></span></p>
+	          </div>
+	          
+	        </div>
+	    </div>
+</div>       
+
+<div class="col-lg-5 text-right text-md-right" style="margin-top:65px;"id="gledalac">
+	
+	        <img src="/img/profil.jpg" style="width:300px; height:300px;" />
+		<div class="dugmici">
+			<button class="btnBioskopiAdmin btn btn-primary" style=" width: 200px;" id="1">Lista bioskopa</button>
+	        <button class="btnDodaj btn btn-primary" style="width: 200px;" onclick="location.href='BioskopAdd.html'" id="2">Dodaj bioskop</button>
+			<button class="btnRegistracija btn-primary" style=" width: 200px;" onclick="location.href='registracijaMenadzera.html'" id="3">Registracija menadzera</button>
+			<button class="btnUklanjanje btn btn-primary" style=" width: 200px;" onclick="location.href='listaMenadzera.html'" id="4">Uklanjanje menadzera</button>
+		 
+			
+		</div>
+	      </div>
+
+</div>
+</div>
+
+<div  id="bioskopiAdmin">
+		
+		<section class="text-center" id="prikaz" style="margin-top:5%;">
+	
+	    <!-- Section heading -->
+	    <h3 class="font-weight-bold " style="color:white">LISTA BIOSKOPA:</h3>
+		<hr class=" accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 300px;">
+	
+	    <div class="row">
+		
+	<table class="table table-hover table-striped table-dark" id="tabelaA">
+				  
+				   <tr>
+				      
+				      <th scope="col">Naziv</th>
+				      <th scope="col">Adresa</th>
+				      <th scope="col">Broj centrale</th>
+				      <th scope="col">Email</th>
+				      <th scope="col">Opcija</th>
+				      <th scope="col">Opcija</th>
+				    </tr>
+				  
+				  
+				</table>
+				
+			</div>
+		</section>
+	</div>
+
+<!-- Obrazac za izmjenu bioskopa-->
+		<div class="d-none" id="Izmena-bioskop">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card" id="logcard" style="height:550px">
+					<div class="card-header">
+						<h3>Novi podaci za izabrani bioskop:</h3>
+						
+					</div>
+					<div class="card-body" style="background-color: white">
+						<form >
+							<div id="izmenaBioskop">
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<input id="izmeni" value="Izmeni" class="btn btn-primary float-right login_btn" >
+							</div>
+						</form>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+
+
+
+</body>
+
+
+</html>

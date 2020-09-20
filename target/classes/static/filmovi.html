@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+ <link rel="icon" href="/img/favicon.ico" type="image/gif" sizes="16x16">
+ <title>Pocetna stranica</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/pocetna.css" type="text/css">	
+  <script type="text/javascript" src="/js/filmovi.js"></script>
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" >
+			<a href="#" class="navbar-brand">
+				<img src="/img/cinema1.jpg" height="28" alt="CoolBrand">
+			</a>
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<div class="navbar-nav ml" >
+					<a href="index.html" class="nav-item nav-link active">Početna</a>
+					<div class="nav-item dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Filmovi</a>
+						<div class="dropdown-menu">
+							<a href="filmovi.html" class="dropdown-item">Filmovi</a>
+							<a href="pretraga.html" class="dropdown-item">Pretraga</a>
+						</div>
+					</div>
+					
+					
+				</div>
+				<div class="navbar-nav ml-auto">
+					<a  href="prijava.html" class="nav-item nav-link">Prijava</a>
+					<a href="registracija.html" class="nav-item nav-link">Registracija</a>
+				</div>
+				
+			</div>
+		</nav>
+		
+		
+<section >		
+				<h2>DOSTUPNI FILMOVI:</h2>
+			<hr class=" accent-2  d-inline-block" >
+			<h2>
+			<div class="dropdown">
+			  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			   Sortiraj po:
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			  <!--   <a class="dropdown-item" id="sortNaziv">Nazivu</a>--> 
+			    <button class="sortNaziv dropdown-item" >Nazivu</button>
+			    <button class="sortOcena dropdown-item">Oceni</button>
+			   <button class="sortTrajanje dropdown-item">Trajanju</button>
+			  </div>
+			  <a href="pretraga.html" class="btn btn-primary" role="button" aria-pressed="true">Pretraga po kriterijumu</a>
+			 </div>
+		
+		
+		</div>
+			
+</section>		
+		
+		
+		
+		
+		
+		<!--Table-->
+<section >		
+				<table class="moja table table-hover table-striped table-dark" id="tabela">
+				 
+				    <tr>   
+				      <th scope="col">Id</th>
+				      <th scope="col">Naziv</th>
+				      <th scope="col">Opis</th>
+				      <th scope="col">Zanr</th>
+				      <th scope="col">Trajanje</th>
+					  <th scope="col">Ocena</th>
+					  <th scope="col">Projekcije</th>
+				    </tr>
+				
+				</table>
+				
+				
+			
+				
+</section>		
+
+<section >		
+				<table class="moja table table-hover table-striped table-dark" id="tabela1">
+				 
+				    <tr>   
+				      <th scope="col">Naziv</th>
+				      <th scope="col">Datum odrzavanja</th>
+				      <th scope="col">Vreme pocetka</th>
+				      <th scope="col">Cena</th>
+					  <th scope="col">Broj rezervacija</th>
+					  <th scope="col">Bioskop</th>
+					  <th scope="col">Sala</th>
+					  <th scope="col">Rezervisi</th>
+				    </tr>
+				
+				</table>
+				
+				
+			
+				
+</section>		
+		
+		<!-- Obrazac za rezervaciju -->
+		<div class="d-none" id="kartica1">
+			<div class="d-flex justify-content-center h-100" style="
+    background-color: rgb(0,0,0,0.6);
+    padding-bottom: 20px;
+">
+				<div class="card" id="logcard">
+					<div class="card-header">
+						<h3>Popuni podatke</h3>
+						
+					</div>
+					<div class="card-body" style="background-color: rgba(0,0,0,0.0)">
+						<form>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-film"></i></span>
+								</div>
+								<input type="text" class="form-control" id="korisnickoIme" placeholder="Korisničko ime">
+								
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fa fa-film"></i></span>
+								</div>
+								<input type="password" class="form-control" id="lozinka" placeholder="Lozinka">
+							</div>
+							<div id="filmic">
+							
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<input id="rezervacija" value="Rezerviši" class="btn btn-primary float-right login_btn" >
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+						<div class="d-flex justify-content-center links">
+							Niste prijavljeni?
+						</div>
+						<div class="d-flex justify-content-center">
+							<a href="register.html">Registrujte se</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		</body>
+
+
+</html>
