@@ -1,0 +1,22 @@
+html,body{
+	margin:0;
+	padding:0;
+	background-color:#343a40;
+	
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: "Trebuchet MS", Tahoma, sans-serif;
+	
+}
+
+.h6, h6 {
+	color:white;
+}
+#dropdown1{
+	margin-top:50px;
+}
+
+p{
+	color=white;
+}
